@@ -7,7 +7,7 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1500.0
+offset_right = 1280.0
 offset_bottom = 800.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -49,6 +49,7 @@ text = "SPEAKER"
 
 [node name="SpeakerLineEdit" type="LineEdit" parent="UI/UIHBox/UIVBox/Input/InputMargin/InputVBox/SpeakerVBox"]
 layout_mode = 2
+max_length = 64
 
 [node name="TextVBox" type="VBoxContainer" parent="UI/UIHBox/UIVBox/Input/InputMargin/InputVBox"]
 layout_mode = 2
@@ -57,8 +58,12 @@ layout_mode = 2
 layout_mode = 2
 text = "TEXT"
 
-[node name="TextLineEdit" type="TextEdit" parent="UI/UIHBox/UIVBox/Input/InputMargin/InputVBox/TextVBox"]
+[node name="TextEdit" type="TextEdit" parent="UI/UIHBox/UIVBox/Input/InputMargin/InputVBox/TextVBox"]
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
+wrap_mode = 1
+autowrap_mode = 2
 
 [node name="SpeedVBox" type="VBoxContainer" parent="UI/UIHBox/UIVBox/Input/InputMargin/InputVBox"]
 layout_mode = 2
@@ -75,6 +80,7 @@ rounded = true
 
 [node name="PlayButton" type="Button" parent="UI/UIHBox/UIVBox/Input/InputMargin/InputVBox"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "PLAY"
 
 [node name="Output" type="Control" parent="UI/UIHBox/UIVBox"]
@@ -93,10 +99,23 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="DialoguePanel" type="Panel" parent="UI/UIHBox/UIVBox/Output/OutputMargin"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/UIHBox/UIVBox/Output/OutputMargin"]
 layout_mode = 2
+theme_override_constants/separation = 8
 
-[node name="DialogueMargin" type="MarginContainer" parent="UI/UIHBox/UIVBox/Output/OutputMargin/DialoguePanel"]
+[node name="Label" type="Label" parent="UI/UIHBox/UIVBox/Output/OutputMargin/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 28
+text = "Speaker
+"
+
+[node name="DialoguePanel" type="Panel" parent="UI/UIHBox/UIVBox/Output/OutputMargin/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DialogueMargin" type="MarginContainer" parent="UI/UIHBox/UIVBox/Output/OutputMargin/VBoxContainer/DialoguePanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -104,14 +123,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 24
+theme_override_constants/margin_top = 28
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 24
 
-[node name="DialogueRTLabel" type="RichTextLabel" parent="UI/UIHBox/UIVBox/Output/OutputMargin/DialoguePanel/DialogueMargin"]
+[node name="DialogueRTLabel" type="RichTextLabel" parent="UI/UIHBox/UIVBox/Output/OutputMargin/VBoxContainer/DialoguePanel/DialogueMargin"]
 layout_mode = 2
-theme_override_constants/line_separation = 13
-theme_override_font_sizes/normal_font_size = 34
+theme_override_constants/line_separation = 8
+theme_override_font_sizes/normal_font_size = 28
 text = "Five fundamental forces at work in the universe: the strong force, the weak force, the electromagnetic force, the gravitational force, and the egg force. They have different ranges and have different strengths."
 fit_content = true
 autowrap_mode = 2
