@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://06gjwf65o842"]
+
+[node name="Main" type="Node2D"]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1500.0
+offset_bottom = 800.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UIHBox" type="HBoxContainer" parent="UI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="OptionsPanel" type="Panel" parent="UI/UIHBox"]
+custom_minimum_size = Vector2(220, 800)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="OptionsMargin" type="MarginContainer" parent="UI/UIHBox/OptionsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 6
+
+[node name="OptionsVBox" type="VBoxContainer" parent="UI/UIHBox/OptionsPanel/OptionsMargin"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 16
+
+[node name="FontSizeVBox" type="VBoxContainer" parent="UI/UIHBox/OptionsPanel/OptionsMargin/OptionsVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="FontSizeLabel" type="Label" parent="UI/UIHBox/OptionsPanel/OptionsMargin/OptionsVBox/FontSizeVBox"]
+layout_mode = 2
+text = "FONT SIZE"
+
+[node name="FontSizeSpinBox" type="SpinBox" parent="UI/UIHBox/OptionsPanel/OptionsMargin/OptionsVBox/FontSizeVBox"]
+layout_mode = 2
+min_value = 6.0
+max_value = 72.0
+value = 16.0
+rounded = true
+update_on_text_changed = true
+suffix = "px"
+
+[node name="SpeedVBox" type="VBoxContainer" parent="UI/UIHBox/OptionsPanel/OptionsMargin/OptionsVBox"]
+layout_mode = 2
+
+[node name="SpeedLabel" type="Label" parent="UI/UIHBox/OptionsPanel/OptionsMargin/OptionsVBox/SpeedVBox"]
+layout_mode = 2
+text = "SPEED"
+
+[node name="SpeedSpinBox" type="SpinBox" parent="UI/UIHBox/OptionsPanel/OptionsMargin/OptionsVBox/SpeedVBox"]
+layout_mode = 2
+min_value = 1.0
+value = 5.0
+rounded = true
+
+[node name="PlayButton" type="Button" parent="UI/UIHBox/OptionsPanel/OptionsMargin/OptionsVBox"]
+layout_mode = 2
+text = "PLAY"
+
+[node name="UIVBox" type="VBoxContainer" parent="UI/UIHBox"]
+layout_mode = 2
+
+[node name="Input" type="Control" parent="UI/UIHBox/UIVBox"]
+layout_mode = 2
+
+[node name="Output" type="Control" parent="UI/UIHBox/UIVBox"]
+layout_mode = 2
