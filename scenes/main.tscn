@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://06gjwf65o842"]
+[gd_scene load_steps=5 format=3 uid="uid://06gjwf65o842"]
 
 [ext_resource type="Script" path="res://scripts/ui.gd" id="1_g6440"]
 [ext_resource type="Script" path="res://scripts/dialogue.gd" id="2_emj3n"]
 [ext_resource type="Script" path="res://scripts/play_button.gd" id="2_xso72"]
+[ext_resource type="Script" path="res://scripts/decision_panel.gd" id="4_o0jlr"]
 
 [node name="Main" type="Node2D"]
 
@@ -119,6 +120,57 @@ theme_override_font_sizes/normal_font_size = 28
 fit_content = true
 autowrap_mode = 2
 shortcut_keys_enabled = false
+
+[node name="Decision" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DecisionPanel" type="Panel" parent="UI/Decision"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_right = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_o0jlr")
+
+[node name="DecisionMargin" type="MarginContainer" parent="UI/Decision/DecisionPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="DecisionVBox" type="VBoxContainer" parent="UI/Decision/DecisionPanel/DecisionMargin"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 16
+
+[node name="ChoiceButton" type="Button" parent="UI/Decision/DecisionPanel/DecisionMargin/DecisionVBox"]
+layout_mode = 2
+text = "Choice A"
+
+[node name="ChoiceButton2" type="Button" parent="UI/Decision/DecisionPanel/DecisionMargin/DecisionVBox"]
+layout_mode = 2
+text = "Choice B"
+
+[node name="ChoiceButton3" type="Button" parent="UI/Decision/DecisionPanel/DecisionMargin/DecisionVBox"]
+layout_mode = 2
+text = "Choice B"
 
 [connection signal="pressed" from="UI/Input/InputMargin/InputVBox/PlayButton" to="UI/Input/InputMargin/InputVBox/PlayButton" method="_on_pressed"]
 [connection signal="talking_to_npc" from="UI/Input/InputMargin/InputVBox/PlayButton" to="UI" method="_on_talking_to_npc"]
