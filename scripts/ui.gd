@@ -1,6 +1,7 @@
 class_name Ui
 extends Control
 
+@onready var dialogue: Control = %Dialogue
 @onready var speaker_label: Label = %SpeakerLabel
 @onready var dialogue_rt_label: RichTextLabel = %DialogueRTLabel
 @onready var next_char_timer: Timer = %NextCharTimer
@@ -35,9 +36,23 @@ func _ready() -> void:
 	next_char_timer.wait_time = TEXT_SPEED_FAST
 
 
-func _on_play_button_pressed() -> void:
+func _on_play_button_pressed() -> void:	
+	run_dialogue()
+
+
+func _on_reset_button_pressed() -> void:
+	end_dialogue()
+	
+
+func run_dialogue() -> void:
+	# End dialogue once there are no more lines
 	if current_line >= sample_dialogue.size():
+		end_dialogue()
+		
 		return
+	
+	if !dialogue.visible:
+		dialogue.visible = true
 	
 	var speaker: String = ""
 	
@@ -74,9 +89,14 @@ func complete_line() -> void:
 	next_line = ""
 
 
-func _on_reset_button_pressed() -> void:
+func end_dialogue() -> void:
+	dialogue.visible = false
+	
 	current_line = 0
 	next_line = ""
+	
+	speaker_label.text = ""
+	dialogue_rt_label.clear()
 
 
 func _on_next_char_timer_timeout() -> void:

@@ -15,26 +15,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_g6440")
 
-[node name="UIVBox" type="VBoxContainer" parent="UI"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -640.0
-offset_top = -264.0
-offset_right = 640.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_vertical = 8
-theme_override_constants/separation = 32
-
-[node name="Input" type="Control" parent="UI/UIVBox"]
+[node name="Input" type="Control" parent="UI"]
 layout_mode = 2
+anchors_preset = 0
+offset_top = 508.0
+offset_right = 1280.0
+offset_bottom = 508.0
 size_flags_vertical = 0
 
-[node name="InputMargin" type="MarginContainer" parent="UI/UIVBox/Input"]
+[node name="InputMargin" type="MarginContainer" parent="UI/Input"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,26 +35,32 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="InputVBox" type="VBoxContainer" parent="UI/UIVBox/Input/InputMargin"]
+[node name="InputVBox" type="VBoxContainer" parent="UI/Input/InputMargin"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="PlayButton" type="Button" parent="UI/UIVBox/Input/InputMargin/InputVBox"]
+[node name="PlayButton" type="Button" parent="UI/Input/InputMargin/InputVBox"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
-text = "NEXT LINE"
+text = "TALK"
 
-[node name="ResetButton" type="Button" parent="UI/UIVBox/Input/InputMargin/InputVBox"]
+[node name="ResetButton" type="Button" parent="UI/Input/InputMargin/InputVBox"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "RESET"
 
-[node name="Dialogue" type="Control" parent="UI/UIVBox"]
+[node name="Dialogue" type="Control" parent="UI"]
+unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(1280, 260)
 layout_mode = 2
+anchors_preset = 0
+offset_top = 536.0
+offset_right = 1280.0
+offset_bottom = 796.0
 size_flags_vertical = 8
 
-[node name="DialogueMargin" type="MarginContainer" parent="UI/UIVBox/Dialogue"]
+[node name="DialogueMargin" type="MarginContainer" parent="UI/Dialogue"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -77,24 +72,22 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="DialogueVBox" type="VBoxContainer" parent="UI/UIVBox/Dialogue/DialogueMargin"]
+[node name="DialogueVBox" type="VBoxContainer" parent="UI/Dialogue/DialogueMargin"]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="SpeakerLabel" type="Label" parent="UI/UIVBox/Dialogue/DialogueMargin/DialogueVBox"]
+[node name="SpeakerLabel" type="Label" parent="UI/Dialogue/DialogueMargin/DialogueVBox"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 28
-text = "NARRATOR
-"
 
-[node name="DialoguePanel" type="Panel" parent="UI/UIVBox/Dialogue/DialogueMargin/DialogueVBox"]
+[node name="DialoguePanel" type="Panel" parent="UI/Dialogue/DialogueMargin/DialogueVBox"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="DialogueMargin" type="MarginContainer" parent="UI/UIVBox/Dialogue/DialogueMargin/DialogueVBox/DialoguePanel"]
+[node name="DialogueMargin" type="MarginContainer" parent="UI/Dialogue/DialogueMargin/DialogueVBox/DialoguePanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -106,13 +99,12 @@ theme_override_constants/margin_top = 22
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 24
 
-[node name="DialogueRTLabel" type="RichTextLabel" parent="UI/UIVBox/Dialogue/DialogueMargin/DialogueVBox/DialoguePanel/DialogueMargin"]
+[node name="DialogueRTLabel" type="RichTextLabel" parent="UI/Dialogue/DialogueMargin/DialogueVBox/DialoguePanel/DialogueMargin"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/line_separation = 6
 theme_override_font_sizes/normal_font_size = 28
-text = "Sample text."
 fit_content = true
 autowrap_mode = 2
 shortcut_keys_enabled = false
@@ -122,6 +114,6 @@ unique_name_in_owner = true
 wait_time = 0.05
 one_shot = true
 
-[connection signal="pressed" from="UI/UIVBox/Input/InputMargin/InputVBox/PlayButton" to="UI" method="_on_play_button_pressed"]
-[connection signal="pressed" from="UI/UIVBox/Input/InputMargin/InputVBox/ResetButton" to="UI" method="_on_reset_button_pressed"]
+[connection signal="pressed" from="UI/Input/InputMargin/InputVBox/PlayButton" to="UI" method="_on_play_button_pressed"]
+[connection signal="pressed" from="UI/Input/InputMargin/InputVBox/ResetButton" to="UI" method="_on_reset_button_pressed"]
 [connection signal="timeout" from="UI/NextCharTimer" to="UI" method="_on_next_char_timer_timeout"]
