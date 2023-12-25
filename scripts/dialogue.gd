@@ -6,6 +6,7 @@ extends Control
 @onready var dialogue_rt_label: RichTextLabel = %DialogueRTLabel
 
 @onready var dialogue_lines: Array[Dictionary] = []
+
 var next_line: String = ""
 var current_line_index: int = 0
 
@@ -24,6 +25,9 @@ func run_dialogue() -> void:
 		end_dialogue()
 		
 		return
+	
+	if Globals.player_state != Globals.PlayerState.TALKING:
+		Globals.set_player_state(Globals.PlayerState.TALKING)
 	
 	if !self.visible:
 		self.visible = true
@@ -75,6 +79,8 @@ func end_dialogue() -> void:
 	
 	speaker_label.text = ""
 	dialogue_rt_label.clear()
+	
+	Globals.set_player_state(Globals.PlayerState.MOVE)
 
 
 func _on_next_char_timer_timeout() -> void:

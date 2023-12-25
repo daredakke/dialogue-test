@@ -27,3 +27,7 @@ func _ready() -> void:
 	# Initialise flags
 	for key in Events.keys():
 		flags[key] = 0
+
+
+func set_player_state(new_state) -> void:
+	player_state = new_state
