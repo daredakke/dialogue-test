@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://06gjwf65o842"]
+[gd_scene load_steps=3 format=3 uid="uid://06gjwf65o842"]
 
 [ext_resource type="Script" path="res://scripts/ui.gd" id="1_g6440"]
+[ext_resource type="Script" path="res://scripts/dialogue.gd" id="2_emj3n"]
 
 [node name="Main" type="Node2D"]
 
@@ -59,6 +60,12 @@ offset_top = 536.0
 offset_right = 1280.0
 offset_bottom = 796.0
 size_flags_vertical = 8
+script = ExtResource("2_emj3n")
+
+[node name="NextCharTimer" type="Timer" parent="UI/Dialogue"]
+unique_name_in_owner = true
+wait_time = 0.05
+one_shot = true
 
 [node name="DialogueMargin" type="MarginContainer" parent="UI/Dialogue"]
 layout_mode = 1
@@ -109,11 +116,6 @@ fit_content = true
 autowrap_mode = 2
 shortcut_keys_enabled = false
 
-[node name="NextCharTimer" type="Timer" parent="UI"]
-unique_name_in_owner = true
-wait_time = 0.05
-one_shot = true
-
 [connection signal="pressed" from="UI/Input/InputMargin/InputVBox/PlayButton" to="UI" method="_on_play_button_pressed"]
 [connection signal="pressed" from="UI/Input/InputMargin/InputVBox/ResetButton" to="UI" method="_on_reset_button_pressed"]
-[connection signal="timeout" from="UI/NextCharTimer" to="UI" method="_on_next_char_timer_timeout"]
+[connection signal="timeout" from="UI/Dialogue/NextCharTimer" to="UI/Dialogue" method="_on_next_char_timer_timeout"]
