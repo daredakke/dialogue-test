@@ -15,19 +15,26 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_g6440")
 
-[node name="UIHBox" type="HBoxContainer" parent="UI"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="UIVBox" type="VBoxContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -640.0
+offset_top = -264.0
+offset_right = 640.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 32
 
-[node name="UIVBox" type="VBoxContainer" parent="UI/UIHBox"]
+[node name="Input" type="Control" parent="UI/UIVBox"]
 layout_mode = 2
+size_flags_vertical = 0
 
-[node name="Input" type="Control" parent="UI/UIHBox/UIVBox"]
-custom_minimum_size = Vector2(1280, 540)
-layout_mode = 2
-
-[node name="InputMargin" type="MarginContainer" parent="UI/UIHBox/UIVBox/Input"]
+[node name="InputMargin" type="MarginContainer" parent="UI/UIVBox/Input"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,60 +46,26 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="InputVBox" type="VBoxContainer" parent="UI/UIHBox/UIVBox/Input/InputMargin"]
+[node name="InputVBox" type="VBoxContainer" parent="UI/UIVBox/Input/InputMargin"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="SpeakerVBox" type="VBoxContainer" parent="UI/UIHBox/UIVBox/Input/InputMargin/InputVBox"]
-layout_mode = 2
-
-[node name="SpeakerLabel" type="Label" parent="UI/UIHBox/UIVBox/Input/InputMargin/InputVBox/SpeakerVBox"]
-layout_mode = 2
-text = "SPEAKER"
-
-[node name="SpeakerLineEdit" type="LineEdit" parent="UI/UIHBox/UIVBox/Input/InputMargin/InputVBox/SpeakerVBox"]
-unique_name_in_owner = true
-layout_mode = 2
-max_length = 64
-
-[node name="TextVBox" type="VBoxContainer" parent="UI/UIHBox/UIVBox/Input/InputMargin/InputVBox"]
-layout_mode = 2
-
-[node name="TextLabel" type="Label" parent="UI/UIHBox/UIVBox/Input/InputMargin/InputVBox/TextVBox"]
-layout_mode = 2
-text = "TEXT"
-
-[node name="TextEdit" type="TextEdit" parent="UI/UIHBox/UIVBox/Input/InputMargin/InputVBox/TextVBox"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 200)
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-wrap_mode = 1
-autowrap_mode = 2
-
-[node name="SpeedVBox" type="VBoxContainer" parent="UI/UIHBox/UIVBox/Input/InputMargin/InputVBox"]
-layout_mode = 2
-
-[node name="SpeedLabel" type="Label" parent="UI/UIHBox/UIVBox/Input/InputMargin/InputVBox/SpeedVBox"]
-layout_mode = 2
-text = "SPEED"
-
-[node name="SpeedSpinBox" type="SpinBox" parent="UI/UIHBox/UIVBox/Input/InputMargin/InputVBox/SpeedVBox"]
-layout_mode = 2
-min_value = 1.0
-value = 5.0
-rounded = true
-
-[node name="PlayButton" type="Button" parent="UI/UIHBox/UIVBox/Input/InputMargin/InputVBox"]
+[node name="PlayButton" type="Button" parent="UI/UIVBox/Input/InputMargin/InputVBox"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
-text = "PLAY"
+text = "NEXT LINE"
 
-[node name="Output" type="Control" parent="UI/UIHBox/UIVBox"]
+[node name="ResetButton" type="Button" parent="UI/UIVBox/Input/InputMargin/InputVBox"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "RESET"
+
+[node name="Output" type="Control" parent="UI/UIVBox"]
 custom_minimum_size = Vector2(1280, 260)
 layout_mode = 2
+size_flags_vertical = 8
 
-[node name="OutputMargin" type="MarginContainer" parent="UI/UIHBox/UIVBox/Output"]
+[node name="OutputMargin" type="MarginContainer" parent="UI/UIVBox/Output"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -104,11 +77,11 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/UIHBox/UIVBox/Output/OutputMargin"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/UIVBox/Output/OutputMargin"]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="SpeakerLabel" type="Label" parent="UI/UIHBox/UIVBox/Output/OutputMargin/VBoxContainer"]
+[node name="SpeakerLabel" type="Label" parent="UI/UIVBox/Output/OutputMargin/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -117,11 +90,11 @@ theme_override_font_sizes/font_size = 28
 text = "NARRATOR
 "
 
-[node name="DialoguePanel" type="Panel" parent="UI/UIHBox/UIVBox/Output/OutputMargin/VBoxContainer"]
+[node name="DialoguePanel" type="Panel" parent="UI/UIVBox/Output/OutputMargin/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="DialogueMargin" type="MarginContainer" parent="UI/UIHBox/UIVBox/Output/OutputMargin/VBoxContainer/DialoguePanel"]
+[node name="DialogueMargin" type="MarginContainer" parent="UI/UIVBox/Output/OutputMargin/VBoxContainer/DialoguePanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -129,17 +102,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 28
+theme_override_constants/margin_top = 22
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 24
 
-[node name="DialogueRTLabel" type="RichTextLabel" parent="UI/UIHBox/UIVBox/Output/OutputMargin/VBoxContainer/DialoguePanel/DialogueMargin"]
+[node name="DialogueRTLabel" type="RichTextLabel" parent="UI/UIVBox/Output/OutputMargin/VBoxContainer/DialoguePanel/DialogueMargin"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/line_separation = 8
+size_flags_vertical = 0
+theme_override_constants/line_separation = 6
 theme_override_font_sizes/normal_font_size = 28
-text = "Five fundamental forces at work in the universe: the strong force, the weak force, the electromagnetic force, the gravitational force, and the egg force. They have different ranges and have different strengths."
+text = "Sample text."
 fit_content = true
 autowrap_mode = 2
+shortcut_keys_enabled = false
 
-[connection signal="pressed" from="UI/UIHBox/UIVBox/Input/InputMargin/InputVBox/PlayButton" to="UI" method="_on_play_button_pressed"]
+[node name="NextCharTimer" type="Timer" parent="UI"]
+unique_name_in_owner = true
+wait_time = 0.05
+one_shot = true
+
+[connection signal="pressed" from="UI/UIVBox/Input/InputMargin/InputVBox/PlayButton" to="UI" method="_on_play_button_pressed"]
+[connection signal="pressed" from="UI/UIVBox/Input/InputMargin/InputVBox/ResetButton" to="UI" method="_on_reset_button_pressed"]
+[connection signal="timeout" from="UI/NextCharTimer" to="UI" method="_on_next_char_timer_timeout"]
