@@ -60,12 +60,12 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "RESET"
 
-[node name="Output" type="Control" parent="UI/UIVBox"]
+[node name="Dialogue" type="Control" parent="UI/UIVBox"]
 custom_minimum_size = Vector2(1280, 260)
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="OutputMargin" type="MarginContainer" parent="UI/UIVBox/Output"]
+[node name="DialogueMargin" type="MarginContainer" parent="UI/UIVBox/Dialogue"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -77,11 +77,11 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/UIVBox/Output/OutputMargin"]
+[node name="DialogueVBox" type="VBoxContainer" parent="UI/UIVBox/Dialogue/DialogueMargin"]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="SpeakerLabel" type="Label" parent="UI/UIVBox/Output/OutputMargin/VBoxContainer"]
+[node name="SpeakerLabel" type="Label" parent="UI/UIVBox/Dialogue/DialogueMargin/DialogueVBox"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -90,11 +90,11 @@ theme_override_font_sizes/font_size = 28
 text = "NARRATOR
 "
 
-[node name="DialoguePanel" type="Panel" parent="UI/UIVBox/Output/OutputMargin/VBoxContainer"]
+[node name="DialoguePanel" type="Panel" parent="UI/UIVBox/Dialogue/DialogueMargin/DialogueVBox"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="DialogueMargin" type="MarginContainer" parent="UI/UIVBox/Output/OutputMargin/VBoxContainer/DialoguePanel"]
+[node name="DialogueMargin" type="MarginContainer" parent="UI/UIVBox/Dialogue/DialogueMargin/DialogueVBox/DialoguePanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -106,7 +106,7 @@ theme_override_constants/margin_top = 22
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 24
 
-[node name="DialogueRTLabel" type="RichTextLabel" parent="UI/UIVBox/Output/OutputMargin/VBoxContainer/DialoguePanel/DialogueMargin"]
+[node name="DialogueRTLabel" type="RichTextLabel" parent="UI/UIVBox/Dialogue/DialogueMargin/DialogueVBox/DialoguePanel/DialogueMargin"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
