@@ -17,6 +17,59 @@ var npc_lines: Array[Dictionary] = [
 	},
 ]
 
+# line_groups -> line_group (-> line (-> choice))
+var line_groups: Array = [
+	# Group 0
+	[
+		{
+			"speaker": "Some Guy",
+			"line": "0 line A",
+		},
+		{
+			"speaker": "Some Guy",
+			"line": "0 line B",
+		},
+		{
+			"speaker": "Some Guy",
+			"line": "What to do?",
+			"decision": [
+				{
+					"choice": "Choice A",
+					"nextLineGroup": 1
+				},
+				{
+					"choice": "Choice B",
+					"nextLineGroup": 2
+				},
+				{
+					"choice": "END",
+					"nextLineGroup": 3
+				},
+			]
+		},
+	],
+	# Group 1
+	[
+		{
+			"speaker": "Some Guy",
+			"line": "1 line A",
+		},
+	],
+	# Group 2
+	[
+		{
+			"speaker": "Some Guy",
+			"line": "2 line A",
+		},
+		{
+			"speaker": "Some Guy",
+			"line": "2 line B",
+		},
+	],
+	# Group 3 - empty to end dialogue if such a choice is available
+	[]
+]
+
 
 func _on_pressed() -> void:
 	self.talking_to_npc.emit(npc_lines)
