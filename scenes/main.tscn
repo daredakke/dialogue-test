@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://06gjwf65o842"]
+[gd_scene load_steps=4 format=3 uid="uid://06gjwf65o842"]
 
 [ext_resource type="Script" path="res://scripts/ui.gd" id="1_g6440"]
 [ext_resource type="Script" path="res://scripts/dialogue.gd" id="2_emj3n"]
+[ext_resource type="Script" path="res://scripts/play_button.gd" id="2_xso72"]
 
 [node name="Main" type="Node2D"]
 
@@ -44,6 +45,7 @@ theme_override_constants/separation = 16
 layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "TALK"
+script = ExtResource("2_xso72")
 
 [node name="ResetButton" type="Button" parent="UI/Input/InputMargin/InputVBox"]
 layout_mode = 2
@@ -116,6 +118,7 @@ fit_content = true
 autowrap_mode = 2
 shortcut_keys_enabled = false
 
-[connection signal="pressed" from="UI/Input/InputMargin/InputVBox/PlayButton" to="UI" method="_on_play_button_pressed"]
+[connection signal="pressed" from="UI/Input/InputMargin/InputVBox/PlayButton" to="UI/Input/InputMargin/InputVBox/PlayButton" method="_on_pressed"]
+[connection signal="talking_to_npc" from="UI/Input/InputMargin/InputVBox/PlayButton" to="UI" method="_on_talking_to_npc"]
 [connection signal="pressed" from="UI/Input/InputMargin/InputVBox/ResetButton" to="UI" method="_on_reset_button_pressed"]
 [connection signal="timeout" from="UI/Dialogue/NextCharTimer" to="UI/Dialogue" method="_on_next_char_timer_timeout"]
