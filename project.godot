@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 [autoload]
 
 Globals="*res://scripts/globals.gd"
+DialogueLines="*res://scripts/dialogue_lines.gd"
 
 [display]
 
