@@ -1,7 +1,7 @@
 class_name PlayButton
 extends Button
 
-signal talking_to_npc(lines: Array[Dictionary])
+signal talking_to_npc(lines: Array)
 
 var npc_lines: Array[Dictionary] = [
 	{
@@ -70,6 +70,8 @@ var line_groups: Array = [
 	[]
 ]
 
+var current_line_group: int = 0
+
 
 func _on_pressed() -> void:
-	self.talking_to_npc.emit(npc_lines)
+	self.talking_to_npc.emit(line_groups[current_line_group])

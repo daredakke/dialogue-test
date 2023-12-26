@@ -8,6 +8,7 @@ extends Control
 func _ready() -> void:
 	remove_choices()
 	decision_panel.set_height_and_position()
+	self.visible = false
 
 
 func remove_choices() -> void:

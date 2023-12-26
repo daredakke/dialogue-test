@@ -5,7 +5,7 @@ extends Control
 @onready var speaker_label: Label = %SpeakerLabel
 @onready var dialogue_rt_label: RichTextLabel = %DialogueRTLabel
 
-@onready var dialogue_lines: Array[Dictionary] = []
+@onready var dialogue_lines: Array = []
 
 var next_line: String = ""
 var current_line_index: int = 0
@@ -16,8 +16,12 @@ func _ready() -> void:
 	next_char_timer.wait_time = Globals.text_speed
 
 
-func set_dialogue_lines(dialogue_array: Array[Dictionary]) -> void:
+func set_dialogue_lines(dialogue_array: Array) -> void:
 	dialogue_lines = dialogue_array
+	
+	# Start displaying text char by char
+	if next_char_timer.is_stopped():
+		next_char_timer.start()
 
 
 func run_dialogue() -> void:
@@ -26,9 +30,6 @@ func run_dialogue() -> void:
 		end_dialogue()
 		
 		return
-	
-	if Globals.player_state != Globals.PlayerState.TALKING:
-		Globals.set_player_state(Globals.PlayerState.TALKING)
 	
 	if !self.visible:
 		self.visible = true
