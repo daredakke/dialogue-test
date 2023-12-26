@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://06gjwf65o842"]
+[gd_scene load_steps=7 format=3 uid="uid://06gjwf65o842"]
 
 [ext_resource type="Script" path="res://scripts/ui.gd" id="1_g6440"]
 [ext_resource type="Script" path="res://scripts/dialogue.gd" id="2_emj3n"]
 [ext_resource type="Script" path="res://scripts/play_button.gd" id="2_xso72"]
 [ext_resource type="Script" path="res://scripts/decision_panel.gd" id="4_o0jlr"]
+[ext_resource type="Script" path="res://scripts/decision.gd" id="4_pihk8"]
+[ext_resource type="PackedScene" uid="uid://be0nww851t6ee" path="res://scenes/choice_button.tscn" id="5_bgrmy"]
 
 [node name="Main" type="Node2D"]
 
@@ -128,6 +130,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("4_pihk8")
 
 [node name="DecisionPanel" type="Panel" parent="UI/Decision"]
 layout_mode = 1
@@ -160,17 +164,14 @@ layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 16
 
-[node name="ChoiceButton" type="Button" parent="UI/Decision/DecisionPanel/DecisionMargin/DecisionVBox"]
+[node name="ChoiceButton" parent="UI/Decision/DecisionPanel/DecisionMargin/DecisionVBox" instance=ExtResource("5_bgrmy")]
 layout_mode = 2
-text = "Choice A"
 
-[node name="ChoiceButton2" type="Button" parent="UI/Decision/DecisionPanel/DecisionMargin/DecisionVBox"]
+[node name="ChoiceButton2" parent="UI/Decision/DecisionPanel/DecisionMargin/DecisionVBox" instance=ExtResource("5_bgrmy")]
 layout_mode = 2
-text = "Choice B"
 
-[node name="ChoiceButton3" type="Button" parent="UI/Decision/DecisionPanel/DecisionMargin/DecisionVBox"]
+[node name="ChoiceButton3" parent="UI/Decision/DecisionPanel/DecisionMargin/DecisionVBox" instance=ExtResource("5_bgrmy")]
 layout_mode = 2
-text = "Choice B"
 
 [connection signal="pressed" from="UI/Input/InputMargin/InputVBox/PlayButton" to="UI/Input/InputMargin/InputVBox/PlayButton" method="_on_pressed"]
 [connection signal="talking_to_npc" from="UI/Input/InputMargin/InputVBox/PlayButton" to="UI" method="_on_talking_to_npc"]

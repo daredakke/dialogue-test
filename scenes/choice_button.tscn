@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://be0nww851t6ee"]
+
+[ext_resource type="Script" path="res://scripts/choice_button.gd" id="1_3xhtm"]
+
+[node name="ChoiceButton" type="Button"]
+text = "Choice"
+script = ExtResource("1_3xhtm")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

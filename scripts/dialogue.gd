@@ -12,6 +12,7 @@ var current_line_index: int = 0
 
 
 func _ready() -> void:
+	self.visible = false
 	next_char_timer.wait_time = Globals.text_speed
 
 
